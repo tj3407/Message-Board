@@ -9,7 +9,16 @@ app.use(express.static(path.join(__dirname, './static')));
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
 
-mongoose.connect('mongodb://localhost/messageboarddb');
+const uniqueValidator = require('mongoose-unique-validator');
+mongoose.connect(process.env.MONGODB_URI)
+    .then(connection => {
+        console.log('Connected to MongoDB');
+    })
+    .catch(error => {
+        console.log("err received", error.message);
+    })
+// mongoose.connect('mongodb://localhost/messageboarddb');
+mongoose.Promise = global.Promise;
 var Schema = mongoose.Schema;
 var PostSchema = new mongoose.Schema({
     name: {type: String, required: true},
