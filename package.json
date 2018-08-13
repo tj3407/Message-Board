@@ -18,6 +18,9 @@
     "mongoose": "^5.0.13",
     "mongoose-unique-validator": "^2.0.1"
   },
+  "engines": {
+    "node": "9.2.0"
+  },
   "devDependencies": {
     "gh-pages": "^1.2.0"
   }
